@@ -91,7 +91,7 @@ int upload_sensory_feed(String a, String g, String s, String d) {
       client.setInsecure(); // this is the magical line that makes everything work
 
 
-      String serverPath = serverName +"?latitude=" + String(a) + "&longitude=" + String(g) + "&owner=" + String(s) + "&contact=" + String(d);
+      String serverPath = serverName +"?latitude=" + String(a) + "&longitude=" + String(g) + "&owner=" + String(s) + "&contact=" + String(d)+"&slot=" +String(2);
             
       http.begin(client,serverPath.c_str());
        
