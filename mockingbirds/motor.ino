@@ -6,8 +6,8 @@
 
 
 // Wifi network station credentials
-#define WIFI_SSID "The WIFI"
-#define WIFI_PASSWORD "123madhu"
+#define WIFI_SSID "vvvvva"
+#define WIFI_PASSWORD "bts army"
 
 #define ownertoken "5982109878:AAGzuL31DtSVJLKIruPOKQLfVKo6GUzsLWo"
 #define ownerid "1694002474"
@@ -35,6 +35,9 @@ void setup() {
   pinMode(gled1,OUTPUT);
   pinMode(wled1,OUTPUT);
   pinMode(button,INPUT);
+  digitalWrite(rled1,1);
+  digitalWrite(gled1,1);
+  digitalWrite(wled1,1);
   Serial.begin(9600);
   secured_client.setTrustAnchors(&cert);
   configTime(0,0,"pool.ntp.org");
@@ -64,7 +67,7 @@ void loop() {
     bot.sendMessage(ownerid,ownermsg, "Markdown");
     bot.sendMessage(municipalid,muncipalmsg,"Markdown");
     while(1) {
-      int stat=upload_sensory_feed("15.8283837","77.588802","Omkar","7396060373");
+      int stat=upload_sensory_feed("15.8283837","77.588802","Omkar","7396060373","");
       if(stat==1) {
         break;
       }
@@ -83,7 +86,7 @@ void loop() {
   }
 }
 
-int upload_sensory_feed(String a, String g, String s, String d) {
+int upload_sensory_feed(String a, String g, String s, String d, String st) {
   
   if(WiFi.status()== WL_CONNECTED){
       HTTPClient http;
@@ -91,7 +94,7 @@ int upload_sensory_feed(String a, String g, String s, String d) {
       client.setInsecure(); // this is the magical line that makes everything work
 
 
-      String serverPath = serverName +"?latitude=" + String(a) + "&longitude=" + String(g) + "&owner=" + String(s) + "&contact=" + String(d)+"&slot=" +String(2);
+      String serverPath = serverName +"?latitude=" + String(a) + "&longitude=" + String(g) + "&owner=" + String(s) + "&contact=" + String(d) + "&status="+String(st)+"&slot=" + String(0);
             
       http.begin(client,serverPath.c_str());
        
@@ -107,8 +110,7 @@ int upload_sensory_feed(String a, String g, String s, String d) {
       else {
         Serial.print("Error code: ");
         Serial.println(httpResponseCode);
-        return(0);
-        
+        return(0);        
       }
       http.end();
     }
