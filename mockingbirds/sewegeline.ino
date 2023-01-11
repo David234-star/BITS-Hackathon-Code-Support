@@ -4,13 +4,13 @@
 #include <ArduinoJson.h>
 #include <ESP8266HTTPClient.h>
 
-#define full 10
-#define threefourth 15
-#define empty 24
+#define full 3
+#define threefourth 3
+#define empty 8
 
 
-#define WIFI_SSID "The WIFI"
-#define WIFI_PASSWORD "123madhu"
+#define WIFI_SSID "Omkar"
+#define WIFI_PASSWORD "reddy519"
 
 #define ownertoken "5982109878:AAGzuL31DtSVJLKIruPOKQLfVKo6GUzsLWo"
 #define ownerid "1694002474"
